@@ -9,7 +9,8 @@ default:
 
 terraform-validate:
   stage: validate
-  image: hashicorp/terraform:light
+  image: hashicorp/terraform:1.5
+  entrypoint: ["/bin/sh", "-c"]
   before_script:
     - terraform --version
     - init
