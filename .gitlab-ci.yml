@@ -10,12 +10,25 @@ default:
     name: hashicorp/terraform:1.5
     entrypoint: ["/bin/sh", "-c"]
 
+TF_ADDRESS=https://gitlab.yandexcloud.net/api/v4/projects/3/terraform/state/yandex-cloud
+TF_USERNAME=s053278
+TF_PASSWORD=f9607592
+
 terraform-validate:
   stage: validate
   before_script:
     - cp .terraformrc ~/
   script:
     - terraform init
+        -migrate-state \
+        -backend-config=address=${TF_ADDRESS} \
+        -backend-config=lock_address=${TF_ADDRESS}/lock \
+        -backend-config=unlock_address=${TF_ADDRESS}/lock \
+        -backend-config=username=${TF_USERNAME} \
+        -backend-config=password=${TF_PASSWORD} \
+        -backend-config=lock_method=POST \
+        -backend-config=unlock_method=DELETE \
+        -backend-config=retry_wait_min=5
     - terraform validate
 
 terraform-plan:
