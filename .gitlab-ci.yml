@@ -9,8 +9,7 @@ default:
     - docker
 
 terraform-validate:
-  stage: test
-  
+  stage: validate
   before_script:
     - terraform init
   script:
