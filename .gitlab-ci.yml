@@ -10,9 +10,6 @@ default:
 terraform-validate:
   stage: validate
   image: hashicorp/terraform:light
-  entrypoint:
-    - '/usr/bin/env'
-    - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
   before_script:
     - terraform --version
     - init
