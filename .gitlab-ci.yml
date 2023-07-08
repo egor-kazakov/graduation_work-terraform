@@ -16,7 +16,7 @@ terraform-validate:
     - terraform validate
 
 terraform-plan:
-  stage: test
+  stage: plan
   before_script:
     - terraform init
   script:
