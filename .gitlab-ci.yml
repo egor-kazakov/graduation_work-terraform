@@ -12,7 +12,6 @@ default:
 
 terraform-validate:
   stage: validate
-  volumes: 
   before_script:
     - cp .terraformrc ~/
   script:
