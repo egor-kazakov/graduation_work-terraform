@@ -33,7 +33,7 @@ terraform-plan:
     paths:
       - plan.cache
     reports:
-      - plan.json
+      terraform: plan.json
 
 deploy:
   stage: deploy
