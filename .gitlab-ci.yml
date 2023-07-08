@@ -10,7 +10,7 @@ stages:
   image: 
     name: registry.gitlab.com/gitlab-org/terraform-images/stable:latest
   variables:
-    TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/aws-buckets
+    TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/yc-tfstate
 
 terraform-validate:
   stage: validate
@@ -27,11 +27,12 @@ terraform-plan:
     - cp .terraformrc ~/
   script:
     - gitlab-terraform plan
-    - gitlab-terraform show -json plan.cache > plan.json
+    - gitlab-terraform plan-json
   artifacts:
-    expire_in: 1 day
+    public: false
     paths:
       - plan.cache
+    reports:
       - plan.json
 
 deploy:
