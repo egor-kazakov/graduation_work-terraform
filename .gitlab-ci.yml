@@ -2,6 +2,7 @@ stages:
   - validate
   - plan
   - deploy
+  - destroy
 
 .base-terraform:
   tags:
@@ -33,7 +34,6 @@ terraform-plan:
       - plan.cache
       - plan.json
 
-
 deploy:
   stage: deploy
   extends: .base-terraform
@@ -41,3 +41,14 @@ deploy:
     - cp .terraformrc ~/
   script:
     - gitlab-terraform apply
+
+destroy:
+  stage: destroy
+  extends: .base-terraform
+  before_script:
+    - cp .terraformrc ~/
+  script:
+    - gitlab-terraform destroy
+  dependencies:
+    - deploy
+  when: manual
