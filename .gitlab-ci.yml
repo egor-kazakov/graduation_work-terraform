@@ -11,14 +11,14 @@ default:
 terraform-validate:
   stage: validate
   before_script:
-    - terraform --version
-    - terraform init
+    - -version
+    - init
   script:
-    - terraform validate
+    - validate
 
 terraform-plan:
   stage: plan
   before_script:
-    - terraform init
+    - init
   script:
-    - terraform plan
+    - plan
