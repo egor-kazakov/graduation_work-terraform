@@ -26,6 +26,13 @@ terraform-plan:
     - cp .terraformrc ~/
   script:
     - gitlab-terraform plan
+    - gitlab-terraform show -json plan.cache > plan.json
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - plan.cache
+      - plan.json
+
 
 deploy:
   stage: deploy
