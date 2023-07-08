@@ -6,21 +6,21 @@ stages:
 default:
   tags:
     - docker
+  image: 
+    name: hashicorp/terraform:1.5
+    entrypoint: ["/bin/sh", "-c"]
 
 terraform-validate:
   stage: validate
-  image: hashicorp/terraform:1.5
-  entrypoint: ["/bin/sh", "-c"]
   before_script:
     - terraform --version
-    - init
+    - terraform init
   script:
-    - validate
+    - terraform validate
 
 terraform-plan:
-  image: hashicorp/terraform:1.5
   stage: plan
   before_script:
-    - init
+    - terraform init
   script:
-    - plan
+    - terraform plan
