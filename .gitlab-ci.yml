@@ -11,14 +11,6 @@ stages:
   variables:
     TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/aws-buckets
 
-terraform-fmt:
-  stage: validate
-  extends: .base-terraform
-  before_script:
-    - cp .terraformrc ~/
-  script:
-    - terraform fmt -check -recursive
-
 terraform-validate:
   stage: validate
   extends: .base-terraform
