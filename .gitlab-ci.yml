@@ -3,7 +3,7 @@ stages:
   - plan
   - deploy
 
-default:
+.base-terraform:
   tags:
     - docker
   image: 
@@ -13,6 +13,7 @@ default:
 
 terraform-fmt:
   stage: validate
+  extends: .base-terraform
   before_script:
     - cp .terraformrc ~/
   script:
@@ -20,6 +21,7 @@ terraform-fmt:
 
 terraform-validate:
   stage: validate
+  extends: .base-terraform
   before_script:
     - cp .terraformrc ~/
   script:
@@ -27,6 +29,7 @@ terraform-validate:
 
 terraform-plan:
   stage: plan
+  extends: .base-terraform
   before_script:
     - cp .terraformrc ~/
   script:
@@ -34,6 +37,7 @@ terraform-plan:
 
 deploy:
   stage: deploy
+  extends: .base-terraform
   before_script:
     - cp .terraformrc ~/
   script:
