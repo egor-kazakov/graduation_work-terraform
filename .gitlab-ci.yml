@@ -16,10 +16,10 @@ terraform-validate:
     - cp .terraformrc ~/
   script:
     - terraform init
-        -migrate-state \
-        -backend-config=address=${TF_ADDRESS} \
-        -backend-config=username=${TF_USERNAME} \
-        -backend-config=password=${TF_PASSWORD} \
+        -migrate-state
+        -backend-config=address=${TF_ADDRESS}
+        -backend-config=username=${TF_USERNAME}
+        -backend-config=password=${TF_PASSWORD}
     - terraform validate
 
 terraform-plan:
