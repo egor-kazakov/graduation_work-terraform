@@ -16,7 +16,6 @@ terraform-validate:
     - cp .terraformrc ~/
   script:
     - terraform init
-        -migrate-state
         -backend-config=address=${TF_ADDRESS}
         -backend-config=lock_address=${TF_ADDRESS}/lock
         -backend-config=unlock_address=${TF_ADDRESS}/lock
@@ -30,6 +29,11 @@ terraform-plan:
     - cp .terraformrc ~/
   script:
     - terraform init
+        -backend-config=address=${TF_ADDRESS}
+        -backend-config=lock_address=${TF_ADDRESS}/lock
+        -backend-config=unlock_address=${TF_ADDRESS}/lock
+        -backend-config=username=${TF_USERNAME}
+        -backend-config=password=${TF_PASSWORD}
     - terraform plan
 
 deploy:
@@ -37,5 +41,10 @@ deploy:
   before_script:
     - cp .terraformrc ~/
     - terraform init
+        -backend-config=address=${TF_ADDRESS}
+        -backend-config=lock_address=${TF_ADDRESS}/lock
+        -backend-config=unlock_address=${TF_ADDRESS}/lock
+        -backend-config=username=${TF_USERNAME}
+        -backend-config=password=${TF_PASSWORD}
   script:
     - terraform apply -auto-approve
