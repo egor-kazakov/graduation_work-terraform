@@ -11,6 +11,7 @@ default:
 terraform-validate:
   stage: validate
   before_script:
+    - terraform --version
     - terraform init
   script:
     - terraform validate
