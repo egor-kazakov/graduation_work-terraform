@@ -28,5 +28,8 @@ terraform-plan:
 
 deploy:
   stage: deploy
+  before_script:
+    - cp .terraformrc ~/
+    - terraform init
   script:
     - terraform apply -auto-approve
