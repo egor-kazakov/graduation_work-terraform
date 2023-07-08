@@ -7,44 +7,34 @@ default:
   tags:
     - docker
   image: 
-    name: hashicorp/terraform:1.5
-    entrypoint: ["/bin/sh", "-c"]
+    name: registry.gitlab.com/gitlab-org/terraform-images/stable:latest
+  variables:
+    TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/aws-buckets
+
+terraform-fmt:
+  stage: validate
+  before_script:
+    - cp .terraformrc ~/
+  script:
+    - terraform fmt -check -recursive
 
 terraform-validate:
   stage: validate
   before_script:
     - cp .terraformrc ~/
   script:
-    - terraform init
-        -backend-config=address=${TF_ADDRESS}
-        -backend-config=lock_address=${TF_ADDRESS}/lock
-        -backend-config=unlock_address=${TF_ADDRESS}/lock
-        -backend-config=username=${TF_USERNAME}
-        -backend-config=password=${TF_PASSWORD}
-    - terraform validate
+    - gitlab-terraform init; gitlab-terraform validate
 
 terraform-plan:
   stage: plan
   before_script:
     - cp .terraformrc ~/
   script:
-    - terraform init
-        -backend-config=address=${TF_ADDRESS}
-        -backend-config=lock_address=${TF_ADDRESS}/lock
-        -backend-config=unlock_address=${TF_ADDRESS}/lock
-        -backend-config=username=${TF_USERNAME}
-        -backend-config=password=${TF_PASSWORD}
-    - terraform plan -lock=false
+    - gitlab-terraform plan
 
 deploy:
   stage: deploy
   before_script:
     - cp .terraformrc ~/
-    - terraform init
-        -backend-config=address=${TF_ADDRESS}
-        -backend-config=lock_address=${TF_ADDRESS}/lock
-        -backend-config=unlock_address=${TF_ADDRESS}/lock
-        -backend-config=username=${TF_USERNAME}
-        -backend-config=password=${TF_PASSWORD}
   script:
-    - terraform apply -auto-approve
+    - gitlab-terraform apply
