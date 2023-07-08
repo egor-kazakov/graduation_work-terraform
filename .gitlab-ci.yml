@@ -25,3 +25,8 @@ terraform-plan:
   script:
     - terraform init
     - terraform plan
+
+deploy:
+  stage: deploy
+  script:
+    - terraform apply -auto-approve
