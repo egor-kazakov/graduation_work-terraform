@@ -12,15 +12,17 @@ default:
 
 terraform-validate:
   stage: validate
+  volumes: 
   before_script:
-    - terraform --version
-    - terraform init
+    - cp .terraformrc ~/
   script:
+    - terraform init
     - terraform validate
 
 terraform-plan:
   stage: plan
   before_script:
-    - terraform init
+    - cp .terraformrc ~/
   script:
+    - terraform init
     - terraform plan
