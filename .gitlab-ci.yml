@@ -34,7 +34,7 @@ terraform-plan:
         -backend-config=unlock_address=${TF_ADDRESS}/lock
         -backend-config=username=${TF_USERNAME}
         -backend-config=password=${TF_PASSWORD}
-    - terraform plan
+    - terraform plan -lock=false
 
 deploy:
   stage: deploy
