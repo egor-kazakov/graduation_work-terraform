@@ -52,3 +52,17 @@ variable "k8s_nodes" {
   description = "Count nodes k8s cluster"
   default = 3
 }
+
+variable "k8s_resources" {
+  type = object({
+    cpu = number
+    mem = number
+    disk = number
+  })
+  description = "Hardware resources for nodes k8s cluster"
+  default = ({
+    cpu = 2
+    mem = 2
+    disk = 64
+  })
+}

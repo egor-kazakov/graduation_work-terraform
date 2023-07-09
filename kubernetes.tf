@@ -42,6 +42,16 @@ resource "yandex_kubernetes_node_group" "this" {
     }
   }
 
+  resources {
+    memory = var.k8s_resources.mem
+    cores  = var.k8s_resources.cpu
+  }
+
+  boot_disk {
+    type = "network-hdd"
+    size = var.k8s_resources.disk
+  }
+
   allocation_policy {
     dynamic "location" {
       for_each = yandex_vpc_subnet.this
