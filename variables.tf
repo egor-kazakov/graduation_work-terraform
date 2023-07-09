@@ -5,7 +5,7 @@
 variable "name_prefix" {
   type = string
   description = "Prefix name"
-  default = "slurm"
+  default = "k8s"
 }
 
 variable "YC_FOLDER_ID" {
