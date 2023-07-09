@@ -36,3 +36,13 @@ variable zone {
     "ru-central1-c"
   ]
 }
+
+####################
+# K8s settings
+####################
+
+variable "k8s_version" {
+  type = string
+  description = "Version kubernetes"
+  default = "1.24"
+}
