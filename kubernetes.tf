@@ -41,8 +41,9 @@ resource "yandex_kubernetes_node_group" "this" {
      type = "containerd"
     }
     resources {
-      memory = var.k8s_resources.mem
-      cores  = var.k8s_resources.cpu
+      memory        = var.k8s_resources.mem
+      cores         = var.k8s_resources.cpu
+      core_fraction = var.k8s_resources.fraction
     }
     boot_disk {
       type = "network-hdd"

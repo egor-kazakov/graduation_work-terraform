@@ -55,14 +55,16 @@ variable "k8s_nodes" {
 
 variable "k8s_resources" {
   type = object({
-    cpu = number
-    mem = number
-    disk = number
+    fraction = number
+    cpu      = number
+    mem      = number
+    disk     = number
   })
   description = "Hardware resources for nodes k8s cluster"
   default = ({
-    cpu = 2
-    mem = 2
-    disk = 64
+    core_fraction = 5
+    cpu           = 2
+    mem           = 2
+    disk          = 64
   })
 }
