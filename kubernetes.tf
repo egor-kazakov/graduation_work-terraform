@@ -40,16 +40,14 @@ resource "yandex_kubernetes_node_group" "this" {
     container_runtime {
      type = "containerd"
     }
-  }
-
-  resources {
-    memory = var.k8s_resources.mem
-    cores  = var.k8s_resources.cpu
-  }
-
-  boot_disk {
-    type = "network-hdd"
-    size = var.k8s_resources.disk
+    resources {
+      memory = var.k8s_resources.mem
+      cores  = var.k8s_resources.cpu
+    }
+    boot_disk {
+      type = "network-hdd"
+      size = var.k8s_resources.disk
+    }
   }
 
   allocation_policy {
