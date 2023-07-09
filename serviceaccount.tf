@@ -23,7 +23,7 @@ resource "yandex_resourcemanager_folder_iam_member" "editor" {
 
 resource "yandex_resourcemanager_folder_iam_member" "k8s-clusters-agent" {
   # Сервисному аккаунту назначается роль "k8s.clusters.agent".
-  folder_id = local.folder_id
+  folder_id = var.YC_FOLDER_ID
   role      = "k8s.clusters.agent"
   member    = "serviceAccount:${yandex_iam_service_account.this.id}"
 }
