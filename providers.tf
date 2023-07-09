@@ -1,3 +1,14 @@
+##########
+# Конфигурационный файл провайдеров.
+# Описаны необходимые версии terraform и подключаемых модулей.
+#
+# Учетные записи для подключения к облаку
+# хранятся как переменные CI/CD Variables:
+#   - YC_TOKEN
+#   - YC_CLOUD_ID
+#   - YC_FOLDER_ID
+##########
+
 terraform {
   required_providers {
     yandex = {
@@ -7,11 +18,3 @@ terraform {
   }
   required_version = ">= 0.13"
 }
-
-#############
-# Учетные записи для подключения к облаку
-# хранятся как переменные CI/CD Variables:
-#   - YC_TOKEN
-#   - YC_CLOUD_ID
-#   - YC_FOLDER_ID
-#############
