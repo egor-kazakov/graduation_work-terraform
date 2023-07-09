@@ -38,7 +38,7 @@ resource "yandex_kubernetes_node_group" "this" {
     name       = "node{instance.index}"
     platform_id = "standard-v3"
     container_runtime {
-     type = "docker"
+     type = "containerd"
     }
   }
 
