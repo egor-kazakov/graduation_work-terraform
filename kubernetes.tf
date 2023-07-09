@@ -41,6 +41,17 @@ resource "yandex_kubernetes_node_group" "this" {
      type = "docker"
     }
   }
+
+  allocation_policy {
+    dynamic "location" {
+      for_each = yandex_vpc_subnet.this
+      content {
+        zone      = location.value.zone
+        subnet_id = location.value.id
+      }
+    }
+  }
+
   scale_policy {
     fixed_scale {
       size = var.k8s_nodes
