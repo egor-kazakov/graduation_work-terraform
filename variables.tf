@@ -8,6 +8,11 @@ variable "name_prefix" {
   default = "slurm"
 }
 
+variable "YC_FOLDER_ID" {
+  type = string
+  description = "Needed TF_VAR_YC_FOLDER_ID for Service account"
+}
+
 ####################
 # Network settings
 ####################

@@ -7,6 +7,7 @@
 #   - YC_TOKEN
 #   - YC_CLOUD_ID
 #   - YC_FOLDER_ID
+#   - TF_VAR_YC_FOLDER_ID
 ##########
 
 terraform {
