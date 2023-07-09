@@ -29,3 +29,21 @@ resource "yandex_kubernetes_cluster" "this" {
     key_id = yandex_kms_symmetric_key.this.id
   }
 }
+
+resource "yandex_kubernetes_node_group" "this" {
+  cluster_id = yandex_kubernetes_cluster.this.id
+  name       = "${var.name_prefix}-nodes"
+
+  instance_template {
+    name       = "node{instance.index}"
+    platform_id = "standard-v3"
+    container_runtime {
+     type = "docker"
+    }
+  }
+  scale_policy {
+    fixed_scale {
+      size = var.k8s_nodes
+    }
+  }
+}

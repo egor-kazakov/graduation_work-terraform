@@ -46,3 +46,9 @@ variable "k8s_version" {
   description = "Version kubernetes"
   default = "1.24"
 }
+
+variable "k8s_nodes" {
+  type = number
+  description = "Count nodes k8s cluster"
+  default = 3
+}
