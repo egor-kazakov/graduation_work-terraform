@@ -1,7 +1,7 @@
 resource "yandex_mdb_postgresql_cluster" "this" {
   name                = "${var.name_prefix}-psql-cluster"
   environment         = "PRODUCTION"
-  network_id          = yandex_vpc_network.this
+  network_id          = yandex_vpc_network.this.id
 
   config {
     version = var.psql_version
