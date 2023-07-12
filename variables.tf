@@ -73,6 +73,24 @@ variable "k8s_resources" {
 # PostgreSQL settings
 ####################
 
+variable "psql_resurce_preset_id" {
+  type        = string
+  description = "Resources for PostgreSQL nodes" # https://cloud.yandex.ru/docs/data-proc/concepts/instance-types
+  default     = "c3-c2-m4"
+}
+
+variable "psql_storage" {
+  type = object({
+    type = string
+    size = number
+  })
+  description = "Storage for PostgreSQL nodes"
+  default = ({
+    type = "network-hdd" # https://cloud.yandex.ru/docs/compute/concepts/disk
+    size = 20
+  })
+}
+
 variable "psql_version" {
   type        = string
   description = "PostgreSQL version"

@@ -6,9 +6,9 @@ resource "yandex_mdb_postgresql_cluster" "this" {
   config {
     version = var.psql_version
     resources {
-      resource_preset_id = "c3-c2-m4"
-      disk_type_id       = "network-hdd"
-      disk_size          = 20
+      resource_preset_id = var.psql_resurce_preset_id
+      disk_type_id       = var.psql_storage.type
+      disk_size          = var.psql_storage.size
     }
     pooler_config {
       pool_discard = true
