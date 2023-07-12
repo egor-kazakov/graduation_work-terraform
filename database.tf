@@ -21,6 +21,12 @@ resource "yandex_mdb_postgresql_cluster" "this" {
     name      = "psql-central1-a"
     subnet_id = yandex_vpc_subnet.this[0].id
   }
+  
+  host {
+    zone      = "ru-central1-b"
+    name      = "psql-central1-b"
+    subnet_id = yandex_vpc_subnet.this[1].id
+  }
 }
 
 resource "yandex_mdb_postgresql_database" "this" {
