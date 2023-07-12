@@ -15,17 +15,14 @@ resource "yandex_mdb_postgresql_cluster" "this" {
       pooling_mode = "SESSION"
     }
   }
+  dynamic "host" {
+    for_each = var.zone
 
-  host {
-    zone      = "ru-central1-a"
-    name      = "psql-central1-a"
-    subnet_id = yandex_vpc_subnet.this[0].id
-  }
-  
-  host {
-    zone      = "ru-central1-b"
-    name      = "psql-central1-b"
-    subnet_id = yandex_vpc_subnet.this[1].id
+    content {
+        zone      = host.value
+        name      = "psql-${host.value}"
+        subnet_id = yandex_vpc_subnet.this[index(var.zone, host.value)].id
+    }
   }
 }
 
