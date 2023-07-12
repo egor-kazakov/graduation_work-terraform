@@ -29,6 +29,7 @@ resource "yandex_kubernetes_cluster" "this" {
   }
   service_account_id      = yandex_iam_service_account.this.id
   node_service_account_id = yandex_iam_service_account.this.id
+
   depends_on = [
     yandex_resourcemanager_folder_iam_member.editor,
     yandex_resourcemanager_folder_iam_member.k8s-clusters-agent,
@@ -36,6 +37,7 @@ resource "yandex_kubernetes_cluster" "this" {
     yandex_resourcemanager_folder_iam_member.images-puller,
     yandex_resourcemanager_folder_iam_member.viewer
   ]
+  
   kms_provider {
     key_id = yandex_kms_symmetric_key.this.id
   }
@@ -46,7 +48,7 @@ resource "yandex_kubernetes_node_group" "this" {
   name       = "${var.name_prefix}-nodes"
 
   instance_template {
-    name       = "node{instance.index}"
+    name        = "node{instance.index}"
     platform_id = "standard-v3"
     container_runtime {
      type = "containerd"
@@ -65,6 +67,7 @@ resource "yandex_kubernetes_node_group" "this" {
   allocation_policy {
     dynamic "location" {
       for_each = yandex_vpc_subnet.this
+      
       content {
         zone      = location.value.zone
         subnet_id = location.value.id
