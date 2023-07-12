@@ -1,3 +1,12 @@
+##########
+# Конфигурационный файл кластера Kubernetes.
+# Создает кластер и распределяет ноды в по всем зонам доступности.
+#
+# Для деплоя кластера требуются:
+#   - KMS провайдер (kmsprovider.tf)
+#   - сервисный аккаунт (serviceaccount.tf)
+##########
+
 resource "yandex_kubernetes_cluster" "this" {
   name       = "${var.name_prefix}-cluster"
   network_id = yandex_vpc_network.this.id

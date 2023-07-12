@@ -1,3 +1,8 @@
+##########
+# Конфигурационный файл кластера PostgreSQL.
+# Создает кластер по всем зонам доступности, а также базу данных и пользователя для работы с ней.
+##########
+
 resource "yandex_mdb_postgresql_cluster" "this" {
   name                = "${var.name_prefix}-psql-cluster"
   environment         = "PRODUCTION"
