@@ -62,7 +62,7 @@ variable "k8s_resources" {
   })
   description = "Hardware resources for nodes k8s cluster"
   default = ({
-    fraction = 5 # Доля мощности CPU (%)
+    fraction = 20 # (%) Доля мощности CPU
     cpu      = 2
     mem      = 2
     disk     = 64
