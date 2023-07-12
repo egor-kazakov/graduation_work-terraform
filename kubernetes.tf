@@ -23,7 +23,6 @@ resource "yandex_kubernetes_cluster" "this" {
         }
       }
     }
-    security_group_ids = [yandex_vpc_security_group.this.id]
   }
   service_account_id      = yandex_iam_service_account.this.id
   node_service_account_id = yandex_iam_service_account.this.id
