@@ -68,3 +68,25 @@ variable "k8s_resources" {
     disk     = 64
   })
 }
+
+####################
+# PostgreSQL settings
+####################
+
+variable "psql_version" {
+  type = string
+  description = "PostgreSQL version"
+  default = "15"
+}
+
+variable "psql_user" {
+  type        = string
+  description = "Database user"
+  default     = "postgres"
+}
+
+variable "psql_password" {
+  type        = string
+  description = "User password"
+  default     = "postgres" # Change Me
+}
