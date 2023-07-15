@@ -50,14 +50,21 @@ resource "yandex_kubernetes_node_group" "this" {
   instance_template {
     name        = "node{instance.index}"
     platform_id = "standard-v3"
+    
     container_runtime {
-     type = "containerd"
+      type = "containerd"
     }
+
+    network_interface {
+      nat = true
+    }
+
     resources {
       memory        = var.k8s_resources.mem
       cores         = var.k8s_resources.cpu
       core_fraction = var.k8s_resources.fraction
     }
+    
     boot_disk {
       type = "network-hdd"
       size = var.k8s_resources.disk
