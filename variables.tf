@@ -37,6 +37,12 @@ variable zone {
   ]
 }
 
+variable "dns_name" {
+  type        = string
+  description = "DNS-name Public zone"
+  default     = "s053278.ru"
+}
+
 ####################
 # K8s settings
 ####################
