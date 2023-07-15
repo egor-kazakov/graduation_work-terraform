@@ -57,6 +57,7 @@ resource "yandex_kubernetes_node_group" "this" {
 
     network_interface {
       nat = true
+      subnet_ids = yandex_vpc_subnet.this[*].id
     }
 
     resources {
@@ -64,7 +65,7 @@ resource "yandex_kubernetes_node_group" "this" {
       cores         = var.k8s_resources.cpu
       core_fraction = var.k8s_resources.fraction
     }
-    
+
     boot_disk {
       type = "network-hdd"
       size = var.k8s_resources.disk
