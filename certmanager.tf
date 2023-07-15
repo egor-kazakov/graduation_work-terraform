@@ -20,7 +20,7 @@ resource "yandex_cm_certificate" "this" {
 }
 
 resource "yandex_dns_zone" "this" {
-  name        = "${var.dns_name}"
+  name        = replace(var.dns_name, ".", "-")
   description = "Public zone"
 
   zone    = "${var.dns_name}."
