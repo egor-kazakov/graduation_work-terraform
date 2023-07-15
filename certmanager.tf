@@ -9,7 +9,7 @@
 ##########
 
 resource "yandex_cm_certificate" "this" {
-  name    = var.dns_name
+  name    = replace(var.dns_name, ".", "-")
   domains = ["${var.dns_name}", "*.${var.dns_name}"]
 
   managed {
@@ -20,7 +20,7 @@ resource "yandex_cm_certificate" "this" {
 }
 
 resource "yandex_dns_zone" "this" {
-  name        = replace(var.dns_name, ".", "-")
+  name        = "${var.dns_name}"
   description = "Public zone"
 
   zone    = "${var.dns_name}."
