@@ -10,6 +10,11 @@ resource "yandex_mdb_postgresql_cluster" "this" {
 
   config {
     version = var.psql_version
+    
+    access {
+      web_sql = true
+    }
+
     resources {
       resource_preset_id = var.psql_resurce_preset_id
       disk_type_id       = var.psql_storage.type
