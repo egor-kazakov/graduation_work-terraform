@@ -77,8 +77,7 @@ resource "yandex_kubernetes_node_group" "this" {
       for_each = yandex_vpc_subnet.this
       
       content {
-        zone      = location.value.zone
-        subnet_id = location.value.id
+        zone = location.value.zone
       }
     }
   }
