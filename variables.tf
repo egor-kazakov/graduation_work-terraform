@@ -112,5 +112,5 @@ variable "psql_user" {
 variable "psql_password" {
   type        = string
   description = "User password"
-  default     = "P@$$w0rd" # Change Me
+  default     = "password" # Change Me
 }
