@@ -21,7 +21,8 @@
 
 ## Настройка доступа к облаку
 
-> Для установки **Yandex Cloud CLI** воспользуйтесь инструкцией [инструкции](https://cloud.yandex.ru/docs/cli/quickstart#install)
+> Для установки **Yandex Cloud CLI** воспользуйтесь [инструкцией](https://cloud.yandex.ru/docs/cli/quickstart#install).
+
 > Для проекта уже настроены переменные окружения в **Settings - CI/CD - Variables**.
 
 Необходимо сначала проинициализировать **Yandex Cloud CLI** ([инструкция](https://cloud.yandex.ru/docs/cli/quickstart#initialize)):
