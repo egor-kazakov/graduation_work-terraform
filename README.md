@@ -11,12 +11,11 @@
 **Содержимое:**
   * `providers.tf` - настройка провайдера облака (*Yandex Cloud*)
   * `backend.tf` - настройка хранения *Terraform State*
-  * `networks.tf` - настройка сети и подсетей
+  * `networks.tf` - настройка сети, подсетей и DNS-зоны
   * `kubernetes.tf` - настройка кластера *Kubernetes*
   * `serviceaccount.tf` - настройка сервисного аккаунта и ролей
   * `kmsprovider.tf` - настройка симметричного ключа
   * `database.tf` - настройка кластера *PostgreSQL*
-  * `dnszone.tf` - настройка DNS-зоны
   * `variables.tf` - хранение переменных проекта
 
 ## Настройка доступа к облаку
